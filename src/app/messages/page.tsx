@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { supabase } from '@/utils/supabase/client'
 import ConversationList from '@/components/ConversationList'
 import ChatWindow from '@/components/ChatWindow'
@@ -12,7 +12,6 @@ export default function MessagesPage() {
     const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(null)
     const [showChat, setShowChat] = useState(false)
     const router = useRouter()
-    const searchParams = useSearchParams()
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
