@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
+@theme {
+  /* Daylight Chrome Palette */
+  --color-background: #f8fafc;
+  --color-foreground: #020617;
+  --color-primary: #7c3aed;
+  /* Deep Violet */
+  --color-secondary: #0891b2;
+  /* Deep Cyan */
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-border-color: #e2e8f0;
+
+  --shadow-chrome: 0 4px 20px rgba(0, 0, 0, 0.05), 0 0 10px rgba(124, 58, 237, 0.05);
+  --shadow-neon: 0 0 15px rgba(124, 58, 237, 0.2);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2.5rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f8fafc;
+  --foreground: #020617;
+  --accent: #7c3aed;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --header-bg: rgba(248, 250, 252, 0.85);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* Chrome/Neon Utilities */
+.glass {
+  background: var(--header-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.chrome-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chrome-card:hover {
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: var(--shadow-chrome);
+  transform: translateY(-2px);
+}
+
+.neon-glow {
+  box-shadow: var(--shadow-neon);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.transition-snap {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -1,36 +1,245 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Complete Social Media App
 
-## Getting Started
+A modern, feature-rich social media application built with Next.js 14, Supabase, and TypeScript. This app includes all essential social media features with a premium, responsive UI.
 
-First, run the development server:
+![Social Media App](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![Supabase](https://img.shields.io/badge/Supabase-Database-green?style=for-the-badge&logo=supabase)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38bdf8?style=for-the-badge&logo=tailwindcss)
 
+## ✨ Features
+
+### 🔐 Authentication
+- Email/Password signup and login
+- GitHub OAuth integration
+- Secure session management
+- Protected routes
+
+### 👥 Social Features
+- **Follow System**: Follow/unfollow users with real-time counts
+- **Feed Tabs**: Switch between "For You" and "Following" feeds
+- **User Profiles**: Customizable profiles with bio, avatar, and stats
+- **Posts**: Create posts with text and images
+- **Interactions**: Like, comment, and bookmark posts
+- **Real-time Updates**: Live post updates using Supabase subscriptions
+
+### 🔔 Notifications
+- Real-time notifications for:
+  - New followers
+  - Post likes
+  - Comments
+  - Reposts
+- Notification bell with unread count badge
+- Mark as read functionality
+- Filter by all/unread
+
+### 🔍 Discovery
+- **Search**: Find users and posts with debounced search
+- **Explore Page**: Discover trending posts and suggested users
+- **Trending Algorithm**: Posts ranked by engagement
+- **User Suggestions**: Recommended users based on follower count
+
+### 💾 Bookmarks
+- Save posts for later
+- Dedicated bookmarks page
+- Quick bookmark toggle on posts
+
+### 🎨 Premium UI/UX
+- **Responsive Design**: Optimized for mobile and desktop
+- **Desktop Sidebar**: Full navigation with gradient logo
+- **Mobile Bottom Nav**: Touch-friendly navigation with active states
+- **Loading Skeletons**: Smooth loading states
+- **Toast Notifications**: Beautiful success/error messages
+- **Character Counter**: Visual feedback for post length
+- **Gradient Buttons**: Modern, eye-catching CTAs
+- **Smooth Animations**: Polished transitions throughout
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth
+- **Storage**: Supabase Storage (for images)
+- **Styling**: TailwindCSS 4
+- **Icons**: Lucide React
+- **Date Formatting**: date-fns
+
+## 📦 Installation
+
+### Prerequisites
+- Node.js 18+ installed
+- A Supabase account
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd social-media
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Set up Supabase
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a new project at [supabase.com](https://supabase.com)
+2. Go to Project Settings > API to get your credentials
+3. Create a `.env.local` file in the root directory:
 
-## Learn More
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Set up the database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run the SQL scripts in order in your Supabase SQL Editor:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Initial Schema**: `supabase/schema.sql`
+   - Creates profiles, posts, likes, and comments tables
+   - Sets up Row Level Security (RLS) policies
+   - Creates triggers for auto-profile creation
 
-## Deploy on Vercel
+2. **Schema Extensions**: `supabase/schema_extensions.sql`
+   - Adds follows, notifications, bookmarks tables
+   - Creates conversations and messages tables
+   - Sets up hashtags and reposts tables
+   - Adds notification triggers
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Set up Storage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Go to Storage in your Supabase dashboard
+2. Create a new bucket called `media`
+3. Set it to **public**
+4. Add the following policy for authenticated uploads:
+
+```sql
+-- Allow authenticated users to upload
+CREATE POLICY "Authenticated users can upload media"
+ON storage.objects FOR INSERT
+TO authenticated
+WITH CHECK (bucket_id = 'media');
+
+-- Allow public access to view media
+CREATE POLICY "Public can view media"
+ON storage.objects FOR SELECT
+TO public
+USING (bucket_id = 'media');
+```
+
+### 6. Run the development server
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the app!
+
+## 📱 Usage
+
+### First Steps
+1. **Sign Up**: Create an account using email/password or GitHub
+2. **Complete Profile**: Add a bio and avatar (optional)
+3. **Create Posts**: Share your thoughts with text and images
+4. **Follow Users**: Discover and follow other users
+5. **Engage**: Like, comment, and bookmark posts
+
+### Navigation
+- **Home**: View all posts or posts from people you follow
+- **Explore**: Discover trending content and suggested users
+- **Search**: Find specific users or posts
+- **Notifications**: See all your activity
+- **Bookmarks**: Access your saved posts
+- **Profile**: View and edit your profile
+
+## 🗂️ Project Structure
+
+```
+social-media/
+├── src/
+│   ├── app/                    # Next.js app router pages
+│   │   ├── page.tsx           # Home feed
+│   │   ├── login/             # Authentication
+│   │   ├── u/[username]/      # User profiles
+│   │   ├── notifications/     # Notifications page
+│   │   ├── bookmarks/         # Bookmarks page
+│   │   ├── search/            # Search page
+│   │   ├── explore/           # Explore page
+│   │   └── layout.tsx         # Root layout
+│   ├── components/            # React components
+│   │   ├── Navbar.tsx         # Desktop sidebar
+│   │   ├── BottomNav.tsx      # Mobile navigation
+│   │   ├── PostCard.tsx       # Post display
+│   │   ├── ComposePost.tsx    # Create posts
+│   │   ├── FollowButton.tsx   # Follow/unfollow
+│   │   ├── NotificationBell.tsx
+│   │   ├── Toast.tsx          # Notifications
+│   │   └── LoadingSkeleton.tsx
+│   └── utils/
+│       └── supabase/
+│           └── client.ts      # Supabase client
+├── supabase/                  # Database schemas
+│   ├── schema.sql            # Initial schema
+│   └── schema_extensions.sql # Extended schema
+└── public/                    # Static assets
+```
+
+## 🔒 Security
+
+- **Row Level Security (RLS)**: All tables have RLS policies
+- **Authentication Required**: Most actions require login
+- **User Isolation**: Users can only modify their own data
+- **Secure Storage**: Images stored in Supabase Storage with proper policies
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import your repository in [Vercel](https://vercel.com)
+3. Add environment variables:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy!
+
+### Database Migrations
+
+When deploying to production:
+1. Run the same SQL scripts in your production Supabase project
+2. Ensure storage bucket is created and configured
+3. Test authentication flows
+
+## 🎯 Future Enhancements
+
+- [ ] Direct messaging system
+- [ ] Hashtag support with clickable tags
+- [ ] User mentions (@username)
+- [ ] Repost/share functionality
+- [ ] Dark mode toggle
+- [ ] Emoji picker
+- [ ] Rich text editor
+- [ ] Infinite scroll
+- [ ] Image optimization
+- [ ] Video support
+- [ ] Stories feature
+- [ ] Advanced analytics
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- Database and Auth by [Supabase](https://supabase.com/)
+- Icons by [Lucide](https://lucide.dev/)
+- Styled with [TailwindCSS](https://tailwindcss.com/)
+
+---
+
+**Made with ❤️ by the community**
