@@ -9,33 +9,8 @@ export default function LoginPage() {
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [diagnostic, setDiagnostic] = useState<{ google: string, supabase: string }>({ google: 'checking...', supabase: 'checking...' })
     const router = useRouter()
 
-    useState(() => {
-        // Simple diagnostic
-        const checkConnectivity = async () => {
-            try {
-                const start = Date.now()
-                await fetch('https://www.google.com', { mode: 'no-cors' })
-                setDiagnostic(prev => ({ ...prev, google: `OK (${Date.now() - start}ms)` }))
-            } catch (e) {
-                setDiagnostic(prev => ({ ...prev, google: 'FAILED' }))
-            }
-
-            try {
-                const start = Date.now()
-                const res = await fetch(process.env.NEXT_PUBLIC_SUPABASE_URL + '/rest/v1/', {
-                    method: 'GET',
-                    headers: { 'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '' }
-                })
-                setDiagnostic(prev => ({ ...prev, supabase: res.ok ? `OK (${Date.now() - start}ms)` : `ERROR ${res.status}` }))
-            } catch (e: any) {
-                setDiagnostic(prev => ({ ...prev, supabase: `FAILED: ${e.message}` }))
-            }
-        }
-        checkConnectivity()
-    })
 
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -98,18 +73,6 @@ export default function LoginPage() {
         <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-50">
             <div className="p-8 bg-white shadow-xl rounded-2xl w-full max-w-md">
                 <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Welcome Back</h1>
-
-                <div className="mb-6 p-3 bg-slate-50 border border-slate-200 rounded-lg text-[10px] font-mono">
-                    <div className="flex justify-between">
-                        <span>GOOGLE CONNECTIVITY:</span>
-                        <span className={diagnostic.google.includes('OK') ? 'text-green-600 font-bold' : 'text-red-600 font-bold'}>{diagnostic.google}</span>
-                    </div>
-                    <div className="flex justify-between mt-1">
-                        <span>SUPABASE API:</span>
-                        <span className={diagnostic.supabase.includes('OK') ? 'text-green-600 font-bold' : 'text-red-600 font-bold'}>{diagnostic.supabase}</span>
-                    </div>
-                    <p className="mt-2 text-slate-400 uppercase">Host: {typeof window !== 'undefined' ? window.location.host : 'SSR'}</p>
-                </div>
 
                 {error && (
                     <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
