@@ -3,16 +3,18 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/utils/supabase/client'
 import PostCard from '@/components/PostCard'
-import { Loader2, Calendar, Edit3, User } from 'lucide-react'
-import { useParams } from 'next/navigation'
+import { Loader2, Calendar, Edit3, User, Mail } from 'lucide-react'
+import { useParams, useRouter } from 'next/navigation'
 import { format } from 'date-fns'
 import EditProfileModal from '@/components/EditProfileModal'
 import FollowButton from '@/components/FollowButton'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { getOrCreateConversation } from '@/utils/messaging'
 
 export default function ProfilePage() {
     const { username } = useParams()
+    const router = useRouter()
     const [profile, setProfile] = useState<any>(null)
     const [posts, setPosts] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
@@ -21,6 +23,7 @@ export default function ProfilePage() {
     const [followerCount, setFollowerCount] = useState(0)
     const [followingCount, setFollowingCount] = useState(0)
     const [activeTab, setActiveTab] = useState('Posts')
+    const [sendingMessage, setSendingMessage] = useState(false)
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -76,6 +79,18 @@ export default function ProfilePage() {
 
         setFollowerCount(followers || 0)
         setFollowingCount(following || 0)
+    }
+
+    const handleMessage = async () => {
+        if (!currentSession || !profile) return
+
+        setSendingMessage(true)
+        const conversationId = await getOrCreateConversation(currentSession.user.id, profile.id)
+        setSendingMessage(false)
+
+        if (conversationId) {
+            router.push('/messages')
+        }
     }
 
     if (loading) {
@@ -134,30 +149,44 @@ export default function ProfilePage() {
                             <p className="text-slate-500 font-bold uppercase tracking-wider text-xs">NETWORK_ID.@{profile.username}</p>
                         </div>
                     </div>
-                    {isOwnProfile ? (
-                        <button
-                            onClick={() => setIsEditModalOpen(true)}
-                            className="px-6 py-2.5 bg-surface border border-border-color rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all duration-300 active:scale-95 shadow-sm"
-                        >
-                            <Edit3 className="w-4 h-4 mb-0.5 inline-block mr-2" />
-                            CONFIGURE
-                        </button>
-                    ) : (
-                        <FollowButton
-                            profileId={profile.id}
-                            onFollowChange={() => fetchFollowCounts(profile.id)}
-                        />
-                    )}
+                    <div className="flex gap-2">
+                        {isOwnProfile ? (
+                            <button
+                                onClick={() => setIsEditModalOpen(true)}
+                                className="px-6 py-2.5 bg-surface border border-border-color rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all duration-300 active:scale-95 shadow-sm"
+                            >
+                                <Edit3 className="w-4 h-4 mb-0.5 inline-block mr-2" />
+                                CONFIGURE
+                            </button>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={handleMessage}
+                                    disabled={sendingMessage}
+                                    className="px-5 py-2.5 bg-surface border border-border-color rounded-xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all duration-300 active:scale-95 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    <Mail className="w-4 h-4 mb-0.5 inline-block mr-2" />
+                                    MESSAGE
+                                </button>
+                                <FollowButton
+                                    profileId={profile.id}
+                                    onFollowChange={() => fetchFollowCounts(profile.id)}
+                                />
+                            </>
+                        )}
+                    </div>
                 </div>
 
-                <div className="p-5 bg-slate-50/50 border border-border-color rounded-xl relative overflow-hidden shadow-sm">
-                    <div className="absolute top-0 right-0 p-2 opacity-5 pointer-events-none">
-                        <User className="w-24 h-24" />
+                {profile.bio && (
+                    <div className="p-5 bg-slate-50/50 border border-border-color rounded-xl relative overflow-hidden shadow-sm">
+                        <div className="absolute top-0 right-0 p-2 opacity-5 pointer-events-none">
+                            <User className="w-24 h-24" />
+                        </div>
+                        <p className="text-sm font-bold tracking-tight text-slate-600 leading-relaxed">
+                            {profile.bio}
+                        </p>
                     </div>
-                    <p className="text-sm font-bold tracking-tight text-slate-600 leading-relaxed uppercase">
-                        {profile.bio || "IDENTITY_LOG_EMPTY. // NO_BIOGRAPHY_DEFINED"}
-                    </p>
-                </div>
+                )}
 
                 <div className="flex flex-wrap gap-8 items-center pt-2">
                     <div className="flex flex-col gap-1">

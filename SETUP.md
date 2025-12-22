@@ -74,11 +74,19 @@ This creates:
 - ✅ follows table
 - ✅ notifications table
 - ✅ bookmarks table
-- ✅ conversations & messages tables
 - ✅ hashtags tables
 - ✅ reposts table
 - ✅ Notification triggers
 - ✅ Helper functions
+
+#### Step 3: Messaging Tables
+Copy and paste the contents of `supabase/create_messaging_tables.sql`
+
+This creates:
+- ✅ conversations table (for 1-to-1 messaging)
+- ✅ messages table (with read receipts)
+- ✅ Real-time messaging triggers
+- ✅ Conversation management functions
 
 ### 6. Set Up Storage
 
@@ -144,6 +152,7 @@ Open http://localhost:3000
    - Click "Post"
 
 3. **Explore Features**
+   - Click **Messages** to send direct messages to other users
    - Click **Explore** to see trending posts
    - Click **Search** to find users
    - Click **Notifications** to see activity
@@ -197,6 +206,7 @@ This usually means:
 - ✅ Create posts with text and images
 - ✅ Like and comment on posts
 - ✅ Follow other users
+- ✅ Send direct messages
 - ✅ Check notifications
 - ✅ Bookmark posts
 - ✅ Search for users and posts

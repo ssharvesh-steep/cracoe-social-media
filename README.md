@@ -22,6 +22,7 @@ A modern, feature-rich social media application built with Next.js 14, Supabase,
 - **Posts**: Create posts with text and images
 - **Interactions**: Like, comment, and bookmark posts
 - **Real-time Updates**: Live post updates using Supabase subscriptions
+- **Direct Messaging**: 1-to-1 messaging with real-time delivery and read receipts
 
 ### 🔔 Notifications
 - Real-time notifications for:
@@ -104,9 +105,13 @@ Run the SQL scripts in order in your Supabase SQL Editor:
 
 2. **Schema Extensions**: `supabase/schema_extensions.sql`
    - Adds follows, notifications, bookmarks tables
-   - Creates conversations and messages tables
-   - Sets up hashtags and reposts tables
+   - Creates hashtags and reposts tables
    - Adds notification triggers
+
+3. **Messaging Tables**: `supabase/create_messaging_tables.sql`
+   - Creates conversations and messages tables for 1-to-1 messaging
+   - Sets up real-time messaging with read receipts
+   - Adds helper functions for conversation management
 
 ### 5. Set up Storage
 
@@ -147,6 +152,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the app!
 
 ### Navigation
 - **Home**: View all posts or posts from people you follow
+- **Messages**: Send and receive direct messages with real-time updates
 - **Explore**: Discover trending content and suggested users
 - **Search**: Find specific users or posts
 - **Notifications**: See all your activity
@@ -162,6 +168,7 @@ social-media/
 │   │   ├── page.tsx           # Home feed
 │   │   ├── login/             # Authentication
 │   │   ├── u/[username]/      # User profiles
+│   │   ├── messages/          # Direct messaging
 │   │   ├── notifications/     # Notifications page
 │   │   ├── bookmarks/         # Bookmarks page
 │   │   ├── search/            # Search page
@@ -173,15 +180,21 @@ social-media/
 │   │   ├── PostCard.tsx       # Post display
 │   │   ├── ComposePost.tsx    # Create posts
 │   │   ├── FollowButton.tsx   # Follow/unfollow
+│   │   ├── MessageBubble.tsx  # Message display
+│   │   ├── MessageInput.tsx   # Message composer
+│   │   ├── ChatWindow.tsx     # Chat interface
+│   │   ├── ConversationList.tsx # Message list
 │   │   ├── NotificationBell.tsx
 │   │   ├── Toast.tsx          # Notifications
 │   │   └── LoadingSkeleton.tsx
 │   └── utils/
-│       └── supabase/
-│           └── client.ts      # Supabase client
+│       ├── supabase/
+│       │   └── client.ts      # Supabase client
+│       └── messaging.ts       # Messaging utilities
 ├── supabase/                  # Database schemas
 │   ├── schema.sql            # Initial schema
-│   └── schema_extensions.sql # Extended schema
+│   ├── schema_extensions.sql # Extended schema
+│   └── create_messaging_tables.sql # Messaging tables
 └── public/                    # Static assets
 ```
 
@@ -212,7 +225,7 @@ When deploying to production:
 
 ## 🎯 Future Enhancements
 
-- [ ] Direct messaging system
+- [x] Direct messaging system ✅
 - [ ] Hashtag support with clickable tags
 - [ ] User mentions (@username)
 - [ ] Repost/share functionality
@@ -224,6 +237,8 @@ When deploying to production:
 - [ ] Video support
 - [ ] Stories feature
 - [ ] Advanced analytics
+- [ ] Group messaging
+- [ ] Voice/video calls
 
 ## 🤝 Contributing
 

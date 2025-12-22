@@ -4,19 +4,22 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Home, Search, Bell, User, TrendingUp, Clapperboard } from 'lucide-react'
+import { Home, Search, Bell, User, TrendingUp, Clapperboard, Mail } from 'lucide-react'
 import { supabase } from '@/utils/supabase/client'
+import { getUnreadCount } from '@/utils/messaging'
 
 export default function BottomNav() {
     const pathname = usePathname()
     const [session, setSession] = useState<any>(null)
     const [unreadCount, setUnreadCount] = useState(0)
+    const [unreadMessages, setUnreadMessages] = useState(0)
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session)
             if (session) {
                 fetchUnreadCount(session.user.id)
+                fetchUnreadMessages(session.user.id)
             }
         })
 
@@ -24,6 +27,7 @@ export default function BottomNav() {
             setSession(session)
             if (session) {
                 fetchUnreadCount(session.user.id)
+                fetchUnreadMessages(session.user.id)
             }
         })
 
@@ -40,13 +44,17 @@ export default function BottomNav() {
         setUnreadCount(count || 0)
     }
 
+    const fetchUnreadMessages = async (userId: string) => {
+        const count = await getUnreadCount(userId)
+        setUnreadMessages(count)
+    }
+
     if (!session) return null
 
     const navItems = [
         { href: '/', icon: Home, label: 'Home' },
+        { href: '/messages', icon: Mail, label: 'Messages', badge: unreadMessages },
         { href: '/reels', icon: Clapperboard, label: 'Reels' },
-        { href: '/explore', icon: TrendingUp, label: 'Explore' },
-        { href: '/search', icon: Search, label: 'Search' },
         { href: '/notifications', icon: Bell, label: 'Notifications', badge: unreadCount },
         { href: `/u/${session?.user?.user_metadata?.username}`, icon: User, label: 'Profile' },
     ]

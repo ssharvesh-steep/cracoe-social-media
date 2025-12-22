@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home, Search, Bell, Bookmark, User, TrendingUp, LogOut, PlusCircle, Shield, Clapperboard } from 'lucide-react'
+import { Home, Search, Bell, Bookmark, User, TrendingUp, LogOut, PlusCircle, Shield, Clapperboard, Mail } from 'lucide-react'
 import { supabase } from '@/utils/supabase/client'
 
 export default function Navbar() {
@@ -29,6 +29,7 @@ export default function Navbar() {
 
     const navItems = [
         { href: '/', icon: Home, label: 'Home' },
+        { href: '/messages', icon: Mail, label: 'Messages' },
         { href: '/reels', icon: Clapperboard, label: 'Reels' },
         { href: '/explore', icon: TrendingUp, label: 'Explore' },
         { href: '/search', icon: Search, label: 'Search' },
