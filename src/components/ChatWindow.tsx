@@ -83,19 +83,48 @@ export default function ChatWindow({
     const handleSend = async (content: string) => {
         if (!content.trim() || sending) return
 
-        setSending(true)
-        const newMessage = await sendMessage(conversationId, currentUserId, content)
-
-        if (newMessage) {
-            // Message will be added via subscription, but add optimistically for better UX
-            setMessages(prev => {
-                if (prev.some(m => m.id === newMessage.id)) return prev
-                return [...prev, newMessage]
-            })
-            setTimeout(scrollToBottom, 100)
+        // 1. Optimistic update - show message IMMEDIATELY
+        const tempId = 'temp-' + Date.now()
+        const optimisticMessage: Message = {
+            id: tempId,
+            content: content.trim(),
+            sender_id: currentUserId,
+            conversation_id: conversationId,
+            created_at: new Date().toISOString(),
+            is_read: false,
+            read_at: null,
+            sender: { // We need to mock the sender for display
+                id: currentUserId,
+                username: 'you', // Will be ignored by isOwnMessage
+                full_name: 'You',
+                avatar_url: ''
+            }
         }
 
-        setSending(false)
+        setMessages(prev => [...prev, optimisticMessage])
+        setTimeout(scrollToBottom, 10) // Instant scroll
+
+        // 2. Send to server
+        setSending(true)
+        try {
+            const newMessage = await sendMessage(conversationId, currentUserId, content)
+
+            if (newMessage) {
+                // Replace temp message with real one
+                setMessages(prev => prev.map(m =>
+                    m.id === tempId ? newMessage : m
+                ))
+            } else {
+                // Remove on failure (or show error state)
+                setMessages(prev => prev.filter(m => m.id !== tempId))
+                alert('Failed to send message')
+            }
+        } catch (error) {
+            console.error('Send failed', error)
+            setMessages(prev => prev.filter(m => m.id !== tempId))
+        } finally {
+            setSending(false)
+        }
     }
 
     return (
